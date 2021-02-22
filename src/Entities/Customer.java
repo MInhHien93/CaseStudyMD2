@@ -1,6 +1,6 @@
 package Entities;
 
-public class Customer {
+public class Customer implements Comparable<Customer> {
     private String name;
     private String dateOfBirth;
     private String identity;
@@ -40,8 +40,13 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Tên khách hàng: " + name+
-                ", Ngày sinh: " + dateOfBirth+
-                ", Chứng minh thư: " + identity;
+        return "Customer's name: " + name+
+                ", Date of birth: " + dateOfBirth+
+                ", Identity: " + identity;
+    }
+
+    @Override
+    public int compareTo(Customer c) {
+        return this.getName().compareTo(c.getName());
     }
 }

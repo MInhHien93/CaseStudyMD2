@@ -3,10 +3,8 @@ package FileCSV;
 import Controller.HotelManagement;
 import Entities.Room;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -24,13 +22,13 @@ public class FileCSVRoom {
             fw.append(FILE_HEADER);
             fw.append(NEW_LINE_SEPARATOR);
             for (Room r : HotelManagement.rooms) {
-                fw.append(r.getIdRoom()+"");
+                fw.append(r.getIdRoom() + "");
                 fw.append(COMA_DELIMITER);
                 fw.append(r.getTypeOfRoom());
                 fw.append(COMA_DELIMITER);
-                fw.append(r.getPriceOfRoom()+"");
+                fw.append(r.getPriceOfRoom() + "");
                 fw.append(COMA_DELIMITER);
-                fw.append(r.getDateOfRent()+"");
+                fw.append(r.getDateOfRent() + "");
                 fw.append(COMA_DELIMITER);
                 fw.append(r.getNameCustomer());
                 fw.append(NEW_LINE_SEPARATOR);
@@ -52,19 +50,19 @@ public class FileCSVRoom {
         BufferedReader br = null;
         ArrayList<Room> rooms = new ArrayList<>();
         Path path = Paths.get(PATH_ROOM);
-//        if (!Files.exists(path)) {
-//            try {
-//                Writer writer = new FileWriter(PATH);
-//            } catch (Exception e) {
-//                System.out.println(e.getMessage());
-//            }
-//        }
+        if (!Files.exists(path)) {
+            try {
+                Writer writer = new FileWriter(PATH_ROOM);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
         try {
-            br = new BufferedReader(new FileReader(PATH_ROOM ));
+            br = new BufferedReader(new FileReader(PATH_ROOM));
             String line;
             while ((line = br.readLine()) != null) {
                 String[] splitData = line.split(",");
-                if (splitData[0].equals("name")) {
+                if (splitData[0].equals("idRoom")) {
                     continue;
                 }
                 Room room = new Room();
@@ -72,12 +70,12 @@ public class FileCSVRoom {
                 room.setTypeOfRoom(splitData[1]);
                 room.setPriceOfRoom(Long.parseLong(splitData[2]));
                 room.setDateOfRent(Integer.parseInt(splitData[3]));
+                room.setNameCustomer(splitData[4]);
                 rooms.add(room);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        }
-        finally {
+        } finally {
             try {
                 br.close();
             } catch (Exception e) {

@@ -62,10 +62,10 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Phòng " + idRoom +
-                ": Khách thuê: " + nameCustomer+
-                ", Loại phòng: " + typeOfRoom+
-                ", Giá phòng: " + priceOfRoom +
-                ", Số ngày thuê: " + dateOfRent + " ngày.";
+        return "Room " + idRoom +
+                ": Type: " + typeOfRoom +
+                ", Price: " + priceOfRoom + " đồng" +
+                ", Date of rent: " + dateOfRent + " ngày" +
+                ", Customer: " + nameCustomer;
     }
 }

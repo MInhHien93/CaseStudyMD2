@@ -4,8 +4,6 @@ import Entities.Customer;
 import Entities.Room;
 import Controller.Enum;
 
-import static Controller.CustomerManagement.customers;
-
 public class Menu {
 
     public static Customer getCustomerInfo() {

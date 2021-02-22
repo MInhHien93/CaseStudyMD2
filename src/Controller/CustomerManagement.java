@@ -18,9 +18,9 @@ public class CustomerManagement {
 
     public Customer searchByName(String name) {
         Customer customer = null;
-        for (Customer c: customers) {
+        for (Customer c : customers) {
             if (c.getName().equals(name)) {
-               customer = c;
+                customer = c;
             }
         }
         return customer;
@@ -28,7 +28,7 @@ public class CustomerManagement {
 
     public void update(String name, Customer customerAfter) throws IOException {
         customers = FileCSVCustomer.readCustomersFileCSV();
-        for (Customer c:customers) {
+        for (Customer c : customers) {
             if (c.getName().equals(name)) {
                 c.setName(customerAfter.getName());
                 c.setDateOfBirth(customerAfter.getDateOfBirth());
@@ -41,11 +41,11 @@ public class CustomerManagement {
     public boolean delete(String name) throws IOException {
         customers = FileCSVCustomer.readCustomersFileCSV();
         boolean isRemove = false;
-        for (Customer c:customers) {
+        for (Customer c : customers) {
             if (c.getName().equals(name)) {
                 customers.remove(c);
                 isRemove = true;
-            } else isRemove =false;
+            } else isRemove = false;
         }
         FileCSVCustomer.writeCustomerToFileCSV(customers);
         return isRemove;
@@ -53,8 +53,10 @@ public class CustomerManagement {
 
     public void showAll() {
         customers = FileCSVCustomer.readCustomersFileCSV();
-        for (Customer c: customers) {
+        for (Customer c : customers) {
             System.out.println(c.toString());
         }
     }
+
+
 }
