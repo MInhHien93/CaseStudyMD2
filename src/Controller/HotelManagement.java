@@ -4,6 +4,7 @@ import Entities.Room;
 import FileCSV.FileCSVCustomer;
 import FileCSV.FileCSVRoom;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static Controller.CustomerManagement.customers;
@@ -16,9 +17,11 @@ public class HotelManagement {
 
     }
 
-    public void addCustomerToRoom(String name, Room room) {
+    public void addCustomerToRoom(Room room) throws IOException {
         customers = FileCSVCustomer.readCustomersFileCSV();
         rooms = FileCSVRoom.readRoomsFileCSV();
+        rooms.add(room);
+        FileCSVRoom.writeRoomToFileCSV(rooms);
 
 
 

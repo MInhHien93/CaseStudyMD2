@@ -27,28 +27,28 @@ public class Menu {
         System.out.println("Enter id room: ");
         int idRoom = Integer.parseInt(Program.sc.nextLine());
         room.setIdRoom(idRoom);
-        System.out.println("Types of rooms in Hotel: " + "Standard" + "/Superior" + "/Deluxe" + "/Suite");
-        System.out.println("Enter type of room: ");
-        String typeOfRoom = Program.sc.nextLine();
-        room.setTypeOfRoom(typeOfRoom);
-        System.out.println("Type of Room:" +
-                "\n 1. Standard" +
-                "\n 2. Superior" +
-                "\n 3. Deluxe" +
-                "\n 4. Suite");
+        System.out.println("Type and price of Room:" +
+                "\n 1. Standard - 150.000 đồng/ngày" +
+                "\n 2. Superior - 200.000 đồng/ngày" +
+                "\n 3. Deluxe - 300.000 đồng/ngày" +
+                "\n 4. Suite - 500.000 đồng/ngày");
         System.out.println("Enter a choice: ");
         int choice = Integer.parseInt(Program.sc.nextLine());
         switch (choice) {
             case 1:
+                room.setTypeOfRoom("Standard");
                 room.setPriceOfRoom(Enum.STANDARD);
                 break;
             case 2:
+                room.setTypeOfRoom("Superior");
                 room.setPriceOfRoom(Enum.SUPERIOR);
                 break;
             case 3:
+                room.setTypeOfRoom("Duluxe");
                 room.setPriceOfRoom(Enum.DELUXE);
                 break;
             case 4:
+                room.setTypeOfRoom("Suite");
                 room.setPriceOfRoom(Enum.SUITE);
                 break;
             default:
@@ -57,6 +57,9 @@ public class Menu {
         System.out.println("Enter date of rent: ");
         int dateOfRent = Integer.parseInt(Program.sc.nextLine());
         room.setDateOfRent(dateOfRent);
+        System.out.println("Enter the namne of customer want to add this room: ");
+        String name = Program.sc.nextLine();
+        room.setNameCustomer(name);
         return room;
     }
 }

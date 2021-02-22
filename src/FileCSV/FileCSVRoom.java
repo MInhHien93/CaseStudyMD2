@@ -1,7 +1,6 @@
 package FileCSV;
 
 import Controller.HotelManagement;
-import Entities.Customer;
 import Entities.Room;
 
 import java.io.BufferedReader;
@@ -18,7 +17,7 @@ public class FileCSVRoom {
     private static final String PATH_ROOM = "src/Hotel.csv";
     private static final String FILE_HEADER = "idRoom, typeOfRoom, priceOfRoom, dateOfRent, nameCustomer";
 
-    public static void writeRoomToFileCSV(ArrayList<Customer> customers) throws IOException {
+    public static void writeRoomToFileCSV(ArrayList<Room> rooms) throws IOException {
         FileWriter fw = null;
         try {
             fw = new FileWriter(PATH_ROOM);

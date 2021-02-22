@@ -91,9 +91,7 @@ public class Program {
                 switch (choice3) {
                     case 1:
                         Room room = Menu.getRoomInfo();
-                        System.out.println("Enter the namne of customer want to add this room: ");
-                        String name = sc.nextLine();
-                        hotel.addCustomerToRoom(name, room);
+                        hotel.addCustomerToRoom(room);
                         for (Room r : rooms) {
                             System.out.println(r.toString());
                         }
